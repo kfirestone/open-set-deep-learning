@@ -1,0 +1,83 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{multirow}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{How to Know What You Don't Know: Open Set Deep Learning\\}
+
+\author{\IEEEauthorblockN{Jordan Spell}
+\IEEEauthorblockA{jdspell@iu.edu}
+\and
+\IEEEauthorblockN{Josiah Keime}
+\IEEEauthorblockA{keimej@iu.edu}
+\and
+\IEEEauthorblockN{Kyle Firestone}
+\IEEEauthorblockA{kfiresto@iu.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+In this project we aim to explore image classification with open set deep learning networks, that is to say networks which are presented with image classes not contained in the training set and are tasked with being able to identify that these are unknown classes as opposed to confidently predicting these images belong to classes in the training set. We will further explore if these models cluster distinct unknown classes sufficiently different from each other that they can perform zero-shot or few-shot learning on the unknown classes. 
+\end{abstract}
+
+\section{Introduction}
+Deep learning networks have immensely improved image classification over the past decade with numerous models achieving over 90\% top-1 accuracy on the ImageNet data set [1]. However, for many of these models they lack generalization and can struggle to perform in real-world scenarios where there are certainly more classes than the model was exposed to in its training set. For example, in autonomous driving it is unlikely that we could label every class a vehicle is likely to encounter. So, how then, does a  model behave when exposed to an image class that was not in the original data set? In some cases the model will incorrectly make a confident prediction of a class that was in the training set [2]. Even if there is no confident prediction, unless a prediction threshold rule has been put in place for the model, an incorrect class will still be predicted. This is the problem with closed set classification, the model assumes everything is a member of the training set classes. Open set models on the other hand are built with the knowledge that a model will see classes not in the training set and will train it to recognize that it does not know what class an image is.\\
+
+Open set models were first considered outside of deep learning just as the deep learning revolution was taking place [3]. This approach utilized an SVM to determine how far was to far from a classification boundary and considered those as unknown classes. Since then several deep learning models have been developed looking at open set learning [4, 5]. The aim of this project is to explore existing open set deep learning frameworks and investigate improving these models. Specifically we will look at high dimensional embeddings of features learned from a network and use clustering in this embedded space to determine if an example is an unknown class. Furthermore, we aim to see if these models are capable of performing zero-shot or few-shot learning on these unknowns.
+
+\section{Project Goals}
+\begin{itemize}
+	\item Recreate an open set image classification model from the literature.
+	\item Iterate on model with the goal of maximizing separation of features in the embedding space to best be able to succeed in zero-shot or few-shot learning.
+	\item Test robustness of models on adversarial data.
+\end{itemize}
+
+\section{Team Member Responsibility}
+Responsibilities are subject to change and will be very fluid with frequent collaboration between team members on tasks.\\
+
+\begin{center}
+\begin{tabular}{|l|c|} 
+\hline
+Team Member & Task \\
+\hline
+All Members & Recreate open set model from literature \\
+\hline
+\multirow{2}{3em}{Jordan} & Work on feature embeddings \\ 
+& Zero-shot learning \\ 
+\hline
+\multirow{3}{3em}{Josiah} & Add openMax to existing classifier \\
+& Iterate on models \\
+& Test with adversarial data \\
+\hline
+\multirow{3}{3em}{Kyle} & Data set creation \\
+& Iterate on models \\
+& Few-shot learning \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Data Set}
+We plan to begin by using ImageNet with a subset of classes removed to serve as the unseen classes for our models. If this proves to be problematic or we are getting very good performance we will examine other image data sets.
+
+\begin{thebibliography}{00}
+\bibitem{b1} Papers with Code - ImageNet Benchmark (Image Classification) –- paperswithcode.com.
+
+\bibitem{b2} A. Nguyen, J. Yosinski, and J. Clune. (2015) Deep neural networks are easily fooled: High confidence predictions for unrecognizable images. In Computer Vision and Pattern Recognition (CVPR), 2015 IEEE Conference on. IEEE.
+
+\bibitem{b3} Scheirer, W., Rezende Rocha, A., Sapkota, A., \& Boult, T. (2013). Toward Open Set Recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 35(7), 1757-1772.
+
+\bibitem{b4} A. Bendale, \& T. E. Boult (2016). Towards Open Set Deep Networks. In 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR) (pp. 1563-1572). IEEE Computer Society.
+
+\bibitem{b5} Shu, Y., Shi, Y., Wang, Y., Huang, T., \& Tain, Y. (2020). “P-ODN: Prototype-Based Open Deep Network for Open Set Recognition.” Scientific Reports, vol. 10, no. 1,  p. 7146.
+\end{thebibliography}
+
+\end{document}
