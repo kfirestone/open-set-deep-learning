@@ -1,4 +1,4 @@
-#How to Know What You Don't Know: Open Set Deep Learning
+# How to Know What You Don't Know: Open Set Deep Learning
 
 This project aims to explore deep learning image classification networks with an open set approach, that is to say a network which is challenged with image classes that were not in the training set and tasked with the ability to recognize it as an unknown class. This is in contrast to the more commmon closed set networks which would confidently predict the unknown class as being one of the training classes. The basic premise is to take the features learned in the convolutional neural network and project them into a higher dimensional space. The network then learns to cluster the projections for each class in the higher dimensional space through a pair of loss functions, one that learns where a representative example (i.e. prototype) of each class would be in the higher dimensional space and a second that encourages each example in the training set to be projected close to its associated prototype. Uknown detection is then determined by prediction confidence thresholds and the distance from the prototype, all of which are learned parameters.
 
